@@ -10,7 +10,7 @@ class GlobalVars {
 
    // refer to this in a pipeline using:
    //
-   // import com.cleverbuilder.GlobalVars
+   // import com.ashu.practice.GlobalVars
    // println GlobalVars.foo
 
 }

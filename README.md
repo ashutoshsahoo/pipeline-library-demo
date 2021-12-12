@@ -27,17 +27,75 @@ Demonstrates how to use a Shared Library in Jenkins pipelines. This repository d
    }
    ```
 
-This will output the following from the build:
+   This will output the following from the build:
 
-```sh
-[Pipeline] stage
-[Pipeline] { (Demo)
-[Pipeline] echo
-Hello world
-[Pipeline] echo
-Hello, Dave.
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] End of Pipeline
-Finished: SUCCESS
-```
+   ```sh
+   [Pipeline] stage
+   [Pipeline] { (Demo)
+   [Pipeline] echo
+   Hello world
+   [Pipeline] echo
+   Hello, Dave.
+   [Pipeline] }
+   [Pipeline] // stage
+   [Pipeline] End of Pipeline
+   Finished: SUCCESS
+   ```
+
+3. To use _develop_ branch inside a Jenkins job with the following pipeline:
+
+   ```groovy
+   @Library('pipeline-library-demo@develop')_
+
+   import com.ashu.practice.GlobalVars
+   import com.ashu.practice.Employee
+
+   pipeline {
+      agent any
+      stages {
+         stage('Demo') {
+            steps {
+               echo 'Hello, world'
+               sayHello 'Ashutosh'
+
+               echo 'The value of foo is : ' + GlobalVars.foo
+
+               script {
+                  employee = new Employee()
+                  employee.age = 21
+                  employee.increaseAge(10)
+                  echo 'Incremented age, is now : ' + employee.age
+               }
+            }
+         }
+      }
+   }
+
+   ```
+
+   This will output the following from the build:
+
+   ```sh
+   [Pipeline] {
+   [Pipeline] stage
+   [Pipeline] { (Demo)
+   [Pipeline] echo
+   Hello, world
+   [Pipeline] echo
+   Hello, Ashutosh.
+   I am inside library.
+   [Pipeline] echo
+   The value of foo is : bar
+   [Pipeline] script
+   [Pipeline] {
+   [Pipeline] echo
+   Incremented age, is now : 31
+   [Pipeline] }
+   [Pipeline] // script
+   [Pipeline] }
+   [Pipeline] // stage
+   [Pipeline] }
+   [Pipeline] // node
+   [Pipeline] End of Pipeline
+   Finished: SUCCESS
+   ```

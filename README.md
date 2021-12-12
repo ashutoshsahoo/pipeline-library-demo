@@ -14,9 +14,13 @@ Demonstrates how to use a Shared Library in Jenkins pipelines. This repository d
    - Credentials: (leave blank)
 
    &nbsp;
+   ![Jenkins-Create-Pipeline](./images/library_config.png)
+
+2. Then create a Jenkins job(Jenkins Dashboard -> New Item).
+
    ![Jenkins-Create-Pipeline](./images/create_pipeline_1.png)
 
-2. Then create a Jenkins job with the following pipeline (note that the underscore `_` is not a typo):
+3. Update job(Jenkins previously created Job page -> Configure) with the following pipeline (note that the underscore `_` is not a typo):
 
    ```groovy
    @Library('pipeline-library-demo')_
@@ -47,7 +51,7 @@ Demonstrates how to use a Shared Library in Jenkins pipelines. This repository d
    Finished: SUCCESS
    ```
 
-3. To use _develop_ branch inside a Jenkins job with the following pipeline:
+4. To use _develop_ branch inside a Jenkins job with the following pipeline:
 
    ```groovy
    @Library('pipeline-library-demo@develop')_

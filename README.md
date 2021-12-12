@@ -13,6 +13,9 @@ Demonstrates how to use a Shared Library in Jenkins pipelines. This repository d
    - Project repository: `https://github.com/ashutoshsahoo/pipeline-library-demo.git`
    - Credentials: (leave blank)
 
+   &nbsp;
+   ![Jenkins-Create-Pipeline](./images/create_pipeline_1.png)
+
 2. Then create a Jenkins job with the following pipeline (note that the underscore `_` is not a typo):
 
    ```groovy
@@ -26,6 +29,8 @@ Demonstrates how to use a Shared Library in Jenkins pipelines. This repository d
 
    }
    ```
+
+   ![Jenkins-Pipeline-Configuration2](./images/create_pipeline_2.png)
 
    This will output the following from the build:
 

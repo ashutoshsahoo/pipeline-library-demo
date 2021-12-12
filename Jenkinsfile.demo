@@ -1,7 +1,7 @@
-@Library('mylibrary') _
+@Library('pipeline-library-demo@develop') _
 
-import com.cleverbuilder.GlobalVars
-import com.cleverbuilder.SampleClass
+import com.ashu.practice.GlobalVars
+import com.ashu.practice.Employee
 
 pipeline {
     agent any
@@ -9,15 +9,15 @@ pipeline {
         stage('Demo') {
             steps {
                 echo 'Hello, world'
-                sayHello 'Dave'
+                sayHello 'Ashutosh'
 
                 echo 'The value of foo is : ' + GlobalVars.foo
 
                 script {
-                    def person = new SampleClass()
-                    person.age = 21
-                    person.increaseAge(10)
-                    echo 'Incremented age, is now : ' + person.age
+                    employee = new Employee()
+                    employee.age = 21
+                    employee.increaseAge(10)
+                    echo 'Incremented age, is now : ' + employee.age
                 }
             }
         }

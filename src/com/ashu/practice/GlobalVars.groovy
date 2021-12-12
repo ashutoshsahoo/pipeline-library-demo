@@ -1,11 +1,16 @@
 #!/usr/bin/env groovy
-package com.cleverbuilder
+package com.ashu.practice
 
+/**
+ * Global Variables.
+ */
 class GlobalVars {
-   static String foo = "bar"
+
+   static String foo = 'bar'
 
    // refer to this in a pipeline using:
    //
    // import com.cleverbuilder.GlobalVars
    // println GlobalVars.foo
+
 }

@@ -6,30 +6,30 @@ Demonstrates how to use a Shared Library in Jenkins pipelines. This repository d
 
 1. In Jenkins, go to Manage Jenkins &rarr; Configure System. Under _Global Pipeline Libraries_, add a library with the following settings:
 
-    - Name: `pipeline-library-demo`
-    - Default version: Specify a Git reference (branch or commit SHA), e.g. `master`
-    - Retrieval method: _Modern SCM_
-    - Select the _Git_ type
-    - Project repository: `https://github.com/monodot/pipeline-library-demo.git`
-    - Credentials: (leave blank)
+   - Name: `pipeline-library-demo`
+   - Default version: Specify a Git reference (branch or commit SHA), e.g. `master`
+   - Retrieval method: _Modern SCM_
+   - Select the _Git_ type
+   - Project repository: `https://github.com/ashutoshsahoo/pipeline-library-demo.git`
+   - Credentials: (leave blank)
 
 2. Then create a Jenkins job with the following pipeline (note that the underscore `_` is not a typo):
 
-    ```
-    @Library('pipeline-library-demo')_
+   ```groovy
+   @Library('pipeline-library-demo')_
 
-    stage('Demo') {
+   stage('Demo') {
 
-      echo 'Hello World'
-   
-      sayHello 'Dave'
+     echo 'Hello World'
 
-    }
-    ```
+     sayHello 'Ashutosh'
+
+   }
+   ```
 
 This will output the following from the build:
 
-```
+```sh
 [Pipeline] stage
 [Pipeline] { (Demo)
 [Pipeline] echo
@@ -41,4 +41,3 @@ Hello, Dave.
 [Pipeline] End of Pipeline
 Finished: SUCCESS
 ```
-
